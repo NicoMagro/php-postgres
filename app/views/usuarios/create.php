@@ -15,6 +15,10 @@ ob_start();
         <label class="form-label">Email</label>
         <input type="email" name="email" class="form-control" placeholder="Ingrese su email" required>
     </div>
+    <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" name="password" class="form-control" placeholder="Ingrese una contraseña" required>
+    </div>
     <button type="submit" class="btn btn-success">Guardar</button>
     <a href="index.php" class="btn btn-secondary">Volver</a>
 </form>

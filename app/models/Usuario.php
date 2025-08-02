@@ -20,10 +20,10 @@ class Usuario
         return $usuarios;
     }
 
-    public function crear($nombre, $email)
+    public function crear($nombre, $email, $passwordHash)
     {
-        $query = "INSERT INTO usuarios (nombre, email) VALUES ($1, $2)";
-        return pg_query_params($this->conn, $query, [$nombre, $email]);
+        $query = "INSERT INTO usuarios (nombre, email, password) VALUES ($1, $2, $3)";
+        return pg_query_params($this->conn, $query, [$nombre, $email, $passwordHash]);
     }
 
     public function obtenerPorId($id)

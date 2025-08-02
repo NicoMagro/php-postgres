@@ -27,9 +27,10 @@ class UsuarioController
     {
         $nombre = $_POST['nombre'] ?? '';
         $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
         $error = '';
 
-        if (!$nombre || !$email) {
+        if (!$nombre || !$email || !$password) {
             $error = "Todos los campos son obligatorios.";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $error = "El email no es válido.";
@@ -40,7 +41,8 @@ class UsuarioController
         if ($error) {
             require __DIR__ . '/../views/usuarios/create.php';
         } else {
-            $this->usuarioModel->crear($nombre, $email);
+            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+            $this->usuarioModel->crear($nombre, $email, $passwordHash);
             header('Location: index.php');
             exit;
         }
